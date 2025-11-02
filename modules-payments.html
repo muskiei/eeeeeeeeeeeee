@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+	    <div class="payments-module"> 
+           <i class="far fa-credit-card"></i>
+    		<div class="payments">
+    			{% for payment in module.data %}
+                    <div class="payment" data-toggle="tooltip" data-html="true" title="<b>{{ payment.mc_name }}</b><br>{{ payment.package_name }}">
+                            {% if payment.uuid == "null" %}
+                                <img src="https://crafatar.com/avatars/8667ba71-b85a-4004-af54-457a9734eed7/?size=100&overlay=true">
+                            {% else %}
+                                <img src="https://crafatar.com/avatars/{{ payment.uuid }}/?size=100&overlay=true">
+                            {% endif %}
+                    </div>
+    			{% endfor %}
+    		</div>
+		</div>
+	</div>
+</div>

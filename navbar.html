@@ -1,0 +1,50 @@
+<div class="profile">
+            <div class="information">
+                <div class="avatar"><img src="https://minotar.net/avatar/{{ player.name is empty ?  'Steve' : player.name }}"></div>
+                <div class="info">
+                    <div class="main">Logged as</div>
+                    <div class="sub">{{ player.name is empty ?  'Guest' : player.name }}</div>
+                </div>
+                <div class="settings">
+                    {% if player.name is not empty %}
+                    <div class="logout">
+                        <a href="/checkout/basket/forget"><i data-toggle="tooltip" title="" class="fas fa-sign-out-alt" data-original-title="Click to logout"></i></a>
+                    </div>
+                    {% endif %}
+                <div class="basket">
+                     <a href="/checkout/basket"><i data-toggle="tooltip" title="" class="fas fa-shopping-basket" data-original-title="Checkout"></i></a>
+                </div>
+            </div>
+            </div>
+        </div>
+<nav class="navbar navbar-default">
+        <div class="navbar-header">
+        </div>
+        <div id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="/">{{ language.home }}</a></li>
+                {% for category in categories %}
+                    {% if category.children %}
+                        <li class="dropdown sleek-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ category.name }}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for category in category.children %}
+                                    <li><a href="/category/{{ category.id }}">{{ category.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% else %}
+                        {% if category.main == 0 %}
+                            <li><a href="/category/{{ category.id }}">{{ category.name }}</a></li>
+                        {% endif %}    
+                    {% endif %}
+                {% endfor %}
+				{% for page in pages %}
+                    <li><a href="/{{ page.slug }}">{{ page.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+</nav>

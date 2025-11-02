@@ -1,0 +1,36 @@
+<div class="panel panel-default topdonator-module">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                {% if module.data.uuid is not empty %}
+                <div class="top-donator">
+                    <div class="avatar">
+                        <img src="https://crafatar.com/renders/body/{{ module.data.uuid }}">
+                    </div>
+                    <div class="data">
+                        <p><b>{{ module.data.mc_name }}</b></p>
+                        <p class="text">Donated
+    					{% if module.data.show_amount_spend == 1 %}
+    						{{ module.data.total|number_format(2, '.', ',') }}
+    						{{ store.currency }}
+    					{% else %}                        
+                            the most
+                        {% endif %}
+                        this month</p>
+                    </div>
+                </div>
+                {% else %}
+                <div class="top-donator">
+                    <div class="avatar">
+                        <img src="https://crafatar.com/renders/body/8667ba71b85a4004af54457a9734eed7">
+                    </div>
+                    <div class="data">
+                        <p><b>Nobody</b></p>
+                        <p class="text">No top donator to display</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
